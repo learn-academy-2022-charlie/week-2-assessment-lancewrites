@@ -208,7 +208,7 @@ const vowelTester3 = "challenges"
        
         }    
 
-//I would refactor, but this particular challenge took about 6 hours of my life. I originally tried to figure it out with written-out loops and other things on the syllabus. However, I will celebrate this victory with a moscow mule
+//I would refactor, but this particular challenge took about 6 hours of my life. I originally tried to figure it out with written-out loops and other things on the syllabus, but I just wasnt writing the proper syntax or something.
 
             // PASS  ./code-challenges.test.js
             // div3
