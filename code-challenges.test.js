@@ -96,10 +96,10 @@ const num3 = -7
 
 describe("capIt", () => {
 
-    // a test/it method, nested within the describe block, that in plain words, describes that the function does.
-    it("takes in an array of words and returns an array with all the words capitalized a string that says hi", () => {
   
-      //an expect method, nested within the test block, calling on the hello() function, followed by the .toEqual() matcher that checks the expected output of the function return.
+    it("takes in an array of words and returns an array with all the words capitalized", () => {
+  
+      
       expect(capIt(randomNouns1)).toEqual(["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew"])
       expect(capIt(randomNouns2)).toEqual(["Temperature", "Database", "Chopsticks", "Mango", "Deduction"])
     })
@@ -115,7 +115,7 @@ const randomNouns2 = ["temperature", "database", "chopsticks", "mango", "deducti
         // div3
         //   ✓ takes a number as an argument and decides if the number is evenly divisble by three or not (2 ms)
         // capIt
-        //   ✕ takes in an array of words and returns an array with all the words capitalized a string that says hi (1 ms)
+        //   ✕ takes in an array of words and returns an array with all the words capitalized  (1 ms)
 
         // ● capIt › takes in an array of words and returns an array with all the words capitalized a string that says hi
 
@@ -123,28 +123,35 @@ const randomNouns2 = ["temperature", "database", "chopsticks", "mango", "deducti
 
 
 // b) Create the function that makes the test pass.
-
-// const capIt = (array) => {
-//     let newArr = []
-//     for(i = 0; i<array.length; i++){
-//        newArr.push(array[i].charAt(0).toUpperCase() + array[i].slice(1))
-       
-//     }
-//     return newArr
+            //Create a function called capIt that takes an array as an argument in the parameter
+//             const capIt = (array) => {
+//                 // creat a new variable called newArr that produces a new array
+//                 let newArr = []
+//                 //the for loop iterates through each index of the array passed as the argument of capIt
+//                 for(i = 0; i<array.length; i++){
+//                     newArr consists of the string at each index of the original array with the first letter uppercased
+//                 newArr.push(array[i].charAt(0).toUpperCase() + array[i].slice(1))
+                
+//                 }
+//                 //newArr outputs
+//                 return newArr
 // }
 
         // PASS  ./code-challenges.test.js
         // div3
         //   ✓ takes a number as an argument and decides if the number is evenly divisble by three or not (3 ms)
         // capIt
-        //   ✓ takes in an array of words and returns an array with all the words capitalized a string that says hi (2 ms)
+        //   ✓ takes in an array of words and returns an array with all the words capitalized (2 ms)
 
 //REFACTOR
-const capIt = (array) => {
-    return array.map(value => {
-        return value.charAt(0).toUpperCase() + value.substring(1)
-    })
-}
+            //create a function called capIt that takes in an array as the argument for the parameter
+            const capIt = (array) => {
+                //return higher order function .map() to iterate through each index in the array argument
+                return array.map(value => {
+                    //the value at each index returns the uppercase of the value at zeroth index and includes the rest of the string starting at index 1
+                    return value.charAt(0).toUpperCase() + value.substring(1)
+                })
+            }
    
         // PASS  ./code-challenges.test.js
         // div3
@@ -153,10 +160,32 @@ const capIt = (array) => {
         //   ✓ takes in an array of words and returns an array with all the words capitalized a string that says hi (1 ms)
 
 
-        
+
 // --------------------3) Create a function that takes in a string and logs the index of the first vowel.
 
 // a) Create a test with expect statements for each of the variables provided.
+
+describe("whereVowel", () => {
+
+    it("takes in a string and logs the index of the first vowel.", () => {
+  
+      expect(whereVowel(vowelTester1)).toEqual(1)
+      expect(whereVowel(vowelTester2)).toEqual(0)
+      expect(whereVowel(vowelTester3)).toEqual(2)
+    })
+  })
+//The Good Failure
+//   FAIL  ./code-challenges.test.js
+//   div3
+//     ✓ takes a number as an argument and decides if the number is evenly divisble by three or not (2 ms)
+//   capIt
+//     ✓ takes in an array of words and returns an array with all the words capitalized (1 ms)
+//   whereVowel
+//     ✕ takes in a string and logs the index of the first vowel. (1 ms)
+
+//   ● whereVowel › takes in a string and logs the index of the first vowel.
+
+//     ReferenceError: whereVowel is not defined
 
 const vowelTester1 = "learn"
 // Expected output: 1
@@ -167,3 +196,24 @@ const vowelTester3 = "challenges"
 
 
 // b) Create the function that makes the test pass.
+        //Create function called whereVowel that takes in a string as an argument for the parameter
+        const whereVowel = (string) => {
+            //turn the string entered as an argument into an array with each character occupying its own index
+            let array = string.split("")
+            //since .findIndex() needs a function to call upon, create a function that individually compares each value to each vowel
+            function checkVal(i) {
+                return i === "a" || i === "e" || i === "i" || i === "o" || i === "u"
+            }
+            return (array.findIndex(checkVal)) //.findIndex() executes my function for each array element and returns the index of the first element that passes the checkVal test
+       
+        }    
+
+//I would refactor, but this particular challenge took about 6 hours of my life. I originally tried to figure it out with written-out loops and other things on the syllabus. However, I will celebrate this victory with a moscow mule
+
+            // PASS  ./code-challenges.test.js
+            // div3
+            // ✓ takes a number as an argument and decides if the number is evenly divisble by three or not (10 ms)
+            // capIt
+            // ✓ takes in an array of words and returns an array with all the words capitalized (1 ms)
+            // whereVowel
+            // ✓ takes in a string and logs the index of the first vowel. (1 ms)
